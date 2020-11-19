@@ -1,0 +1,102 @@
+body {
+  background-color: rgb(170, 187, 204);
+}
+
+.tables {
+  width: 100%;
+  max-width: 45rem;
+  padding: 1em;
+  margin: 1em auto;
+  overflow: auto;
+  color: rgb(102, 79, 145);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0.25rem 1rem rgba(0, 0, 0, 0.25);
+  border: 4px solid rgb(238, 68, 101);
+}
+
+.cards__list {
+  clear: both;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards__item {
+  margin-bottom: 20px;
+  border: 3px solid rgb(216, 191, 216);
+  width: 136px;
+  height: 130px;
+  margin-right: 20px;
+  vertical-align: middle;
+  text-align: center;
+  color: rgb(102, 79, 145);
+}
+
+.occupied {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+button {
+  background-color: rgb(221, 160, 221);
+  border: 0;
+  width: 80px;
+  padding: 5px;
+  color: rgb(102, 79, 145);
+  cursor: pointer;
+  font-size: 1em;
+  outline: none;
+}
+
+.party {
+  width: 100%;
+  max-width: 45rem;
+  padding: 1em;
+  margin: 1em auto;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0.25rem 1rem rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  /* border: 4px solid rgba(10, 10, 101, 0.2); */
+}
+
+.party .title {
+  color: rgb(102, 79, 145);
+}
+
+.party .line {
+  color: rgb(102, 79, 145);
+  font-size: 16px;
+}
+
+.party input {
+  width: 95%;
+  margin: 1em auto;
+  padding: 10px 15px;
+  border: 4px solid rgba(10, 10, 101, 0.2);
+  color: rgba(10, 10, 101, 0.4);
+  font-weight: 700;
+  outline: none;
+}
+
+.party input::placeholder {
+  color: rgba(10, 10, 101, 0.4);
+  font-weight: 700;
+}
+
+.party input:hover,
+.party input:focus {
+  border: 4px solid rgba(10, 10, 101, 0.8);
+  outline: none;
+}
+
+.party button {
+  background-color: rgba(10, 10, 101, 0.2);
+  border: 0;
+  width: auto;
+  padding: 10px 50px;
+  color: rgb(102, 79, 145);
+  cursor: pointer;
+  font-size: 1em;
+  margin: 0 0 1em auto;
+  font-weight: 700;
+  outline: none;
+}

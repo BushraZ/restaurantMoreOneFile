@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      * {
+        font-family: "Roboto";
+      }
+    </style>
+    <title>
+      Restaurant Manager
+    </title>
+  </head>
+
+  <body>
+    <!-- main app  -->
+    <div id="app">
+      <x-restaurant
+        :tables="tables"
+        @available-occupied-table="availableOccupiedTable"
+      ></x-restaurant>
+
+      <!-- new party form -->
+      <div class="party">
+        <h2 class="title">New Party</h2>
+        <p class="line">
+          Fill the following form to allocate a table to a party that is waiting
+          to be seated.
+        </p>
+        <input
+          v-model="numOfPeople"
+          placeholder="Number of people (non-zero positive integer)"
+        />
+        <input
+          v-model="duration"
+          placeholder="Duration of stay in seconds (positive number)"
+        />
+        <input
+          v-model="fussMessage"
+          placeholder="Fuss message if evicted (text)"
+        />
+        <button type="button" @click="addNewParty">
+          Add
+        </button>
+      </div>
+    </div>
+
+    <!-- x-restaurant component -->
+    <template id="x-restaurant">
+      <section class="tables">
+        <h1>
+          Tables Overview
+        </h1>
+
+        <transition-group name="fade" tag="ul" class="cards__list">
+          <x-table
+            v-for="(element, index) in tables"
+            @complete="$emit('available-occupied-table',element.id)"
+            :element="element"
+            :key="element.id"
+          ></x-table>
+        </transition-group>
+      </section>
+    </template>
+
+    <!-- x-table component -->
+    <template id="x-table">
+      <div class="cards__item" v-bind:class="{occupied:!element.status}">
+        <div :status="element.status" v-if="element.status">
+          <p>Table Available</p>
+          <p>(capacity= {{element.capacity}})</p>
+        </div>
+        <div v-else>
+          <p>Occupied by {{element.occupied}}</p>
+          <p :duration="start">(free in {{timeLeft}})</p>
+          <button @click="reAvailableTable">
+            Evict
+          </button>
+        </div>
+      </div>
+    </template>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="main.js"></script>
+</html>
